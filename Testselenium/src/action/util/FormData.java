@@ -9,8 +9,7 @@ public class FormData {
     private static Map<String,String> data=new HashMap<String,String>();
     
     static {
-    	ExcelUtils.getParams();
-    	
+    	data=ExcelUtils.getParams();
     }
     
     /**

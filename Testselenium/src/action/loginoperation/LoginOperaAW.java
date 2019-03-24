@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import action.util.FormData;
@@ -18,7 +19,7 @@ public class LoginOperaAW {
 	
 	public static  WebDriver driver;
 	
-	public static   String  baidu_url=FormData.TEST_IP;
+	public static   String  baidu_url=FormData.TEST_IP.trim();
 	
 	public static void main(String[] args) throws InterruptedException {
 		
@@ -52,7 +53,31 @@ public class LoginOperaAW {
 		
 		//lg.startIE();
 	}
-	  
+	 public void startFirefox() {
+		 
+			System.setProperty("webdriver.gecko.driver", "src/driver/geckodriver.exe");
+			
+		
+		System.setProperty("webdriver.firefox.bin", "C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+		
+		driver=new FirefoxDriver();
+		
+
+		
+		driver.manage().window().maximize();
+		
+	
+		driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+		
+
+		
+		driver.get(baidu_url);
+		
+		System.out.println("当前打开的页面是："+driver.getTitle());
+		
+		
+		 
+	 }
     public void startChrome() {
 	    System.setProperty("webdriver.chrome.driver", "src/driver/chromedriver.exe");
 		
@@ -76,7 +101,7 @@ public class LoginOperaAW {
 			e.printStackTrace();
 		}
 		
-		driver.quit();
+		
     }
     public void startIE() {
     	
@@ -100,6 +125,9 @@ public class LoginOperaAW {
 			e.printStackTrace();
 		}
 		
-		driver.quit();
+		
+    }
+    public static void quit() {
+    	  driver.quit();
     }
 }
