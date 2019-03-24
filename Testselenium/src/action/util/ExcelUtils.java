@@ -120,9 +120,8 @@ public class ExcelUtils {
     	return params;
     }
     public static void main(String[] args) {
-    	ExcelUtils  excel= new ExcelUtils();
     	
-    	Map<String,String> data= excel.getParams();
+    	Map<String,String> data= ExcelUtils.getParams();
     	
     	for(String str:data.keySet()) {
     		
